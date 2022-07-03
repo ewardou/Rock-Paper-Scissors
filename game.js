@@ -1,14 +1,9 @@
-let playerSelection=prompt("Rock, paper, or scissors?");
-playerSelection=playerSelection.toLowerCase()
-console.log("Player selection:",playerSelection);
 
-let userScore=0;
-let computerScore=0;
-
+let userScore;
+let computerScore;
 //Function to randomly select computer's choice
 function computerPlay(){
     let choice=Math.floor(Math.random()*3)+1;
-    console.log("Random number:",choice);
     if (choice===1){
         return "rock"
     } else if (choice===2){
@@ -17,9 +12,8 @@ function computerPlay(){
         return "scissors"
     }
 }
-let computerSelection=computerPlay();
-console.log("Computer selection:",computerSelection);
 
+// Function to compare both selections and decide the winner of a round. Increases the score.
 function playRound(playerSelection, computerSelection){
     //When player wins
     if (playerSelection==="rock" && computerSelection==="scissors"){
@@ -46,6 +40,26 @@ function playRound(playerSelection, computerSelection){
         return "It's a tie"
     }
 }
-console.log(playRound(playerSelection,computerSelection))
-console.log("User score:", userScore);
-console.log("Computer score:", computerScore);
+
+function game(){
+    userScore=0;
+    computerScore=0;
+
+    for (let i=1; i<=5 ;i++){
+        let playerSelection=prompt("Rock, paper, or scissors?");
+        playerSelection=playerSelection.toLowerCase();
+        let computerSelection=computerPlay();
+        console.log(playRound(playerSelection,computerSelection));
+        console.log("User score:",userScore);
+        console.log("Computer score:",computerScore)
+        }
+
+    if (userScore>computerScore){
+        console.log("You have won!");
+    } else if(computerScore>userScore){
+        console.log("You have lost") ;
+    } else{
+        console.log("You have drawn");
+    }
+}
+game();
