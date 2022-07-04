@@ -40,12 +40,12 @@ function playRound(playerSelection, computerSelection){
         return "It's a tie"
     }
 }
-
+// Game function to start a game of rock, paper, scissors
 function game(){
     userScore=0;
     computerScore=0;
 
-    for (let i=1; i<=5 ;i++){
+    for (let i=1; (userScore<5) && (computerScore<5) ;i++){
         let playerSelection=prompt("Rock, paper, or scissors?");
         playerSelection=playerSelection.toLowerCase();
         let computerSelection=computerPlay();
