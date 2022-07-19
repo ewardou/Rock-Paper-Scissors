@@ -1,6 +1,7 @@
 
 let userScore;
 let computerScore;
+let playerSelection
 //Function to randomly select computer's choice
 function computerPlay(){
     let choice=Math.floor(Math.random()*3)+1;
@@ -45,14 +46,14 @@ function game(){
     userScore=0;
     computerScore=0;
 
-    for (let i=1; (userScore<5) && (computerScore<5) ;i++){
-        let playerSelection=prompt("Rock, paper, or scissors?");
-        playerSelection=playerSelection.toLowerCase();
+//    for (let i=1; (userScore<5) && (computerScore<5) ;i++){
+//        let playerSelection=prompt("Rock, paper, or scissors?");
+//        playerSelection=playerSelection.toLowerCase();
         let computerSelection=computerPlay();
         console.log(playRound(playerSelection,computerSelection));
         console.log("User score:",userScore);
         console.log("Computer score:",computerScore)
-        }
+//        }
 
     if (userScore>computerScore){
         console.log("You have won!");
@@ -62,4 +63,17 @@ function game(){
         console.log("You have drawn");
     }
 }
-game();
+
+
+const btn=document.querySelectorAll(".container button")
+btn.forEach((button) =>{
+    button.addEventListener("click",(event)=>{
+        if(event.target.className==="rock"){
+            playerSelection="rock";
+        } else if (event.target.className==="paper"){
+            playerSelection="paper";
+        } else if (event.target.className==="scissors"){
+            playerSelection="scissors"
+        }
+    });
+});
