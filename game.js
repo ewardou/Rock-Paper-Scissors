@@ -15,13 +15,15 @@ btn.forEach((button) =>{
         } else if (event.target.className==="scissors"){
             playerSelection="scissors"
         };
-       playRound(playerSelection,computerPlay());
+        playRound(playerSelection,computerPlay());
+        checkWinner(userScore,computerScore);
     });
 });
 
 const msg=document.querySelector(".message");
 const userScoreDom=document.querySelector(".user-score");
 const computerScoreDom=document.querySelector(".cpu-score");
+const container=document.querySelector(".container");
 
 //Function to randomly select computer's choice
 function computerPlay(){
@@ -91,3 +93,25 @@ function playRound(playerSelection, computerSelection){
     }
 } */
 
+function checkWinner(userScore,computerScore){
+    if (userScore===5){
+        msg.textContent="You have won!";
+        reset()
+    } else if(computerScore===5){
+        msg.textContent="You have lost";
+        reset()
+    };
+}
+
+function reset(){
+    const rst=document.createElement("button");
+    rst.textContent="Reset"
+    rst.setAttribute("style","font-family:'Press Start 2P', cursive;font-size: 30px");
+    container.appendChild(rst);
+    const buttons=document.querySelector(".buttons");
+    container.removeChild(buttons);
+    rst.addEventListener("click",()=>{
+        location.reload();
+        return false;
+    })
+}
