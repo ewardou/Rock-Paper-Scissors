@@ -1,9 +1,12 @@
-
 let userScore=0;
 let computerScore=0;
 let playerSelection;
-//let computerSelection;
 
+
+const msg=document.querySelector(".message");
+const userScoreDom=document.querySelector(".user-score");
+const computerScoreDom=document.querySelector(".cpu-score");
+const container=document.querySelector(".container");
 
 const btn=document.querySelectorAll(".container button")
 btn.forEach((button) =>{
@@ -19,11 +22,6 @@ btn.forEach((button) =>{
         checkWinner(userScore,computerScore);
     });
 });
-
-const msg=document.querySelector(".message");
-const userScoreDom=document.querySelector(".user-score");
-const computerScoreDom=document.querySelector(".cpu-score");
-const container=document.querySelector(".container");
 
 //Function to randomly select computer's choice
 function computerPlay(){
@@ -70,28 +68,6 @@ function playRound(playerSelection, computerSelection){
         return msg.textContent="It's a tie"
     }
 }
-// Game function to start a game of rock, paper, scissors
-/*function game(){
-    userScore=0;
-    computerScore=0;
-
-    for (let i=1; (userScore<5) && (computerScore<5) ;i++){
-        let playerSelection=prompt("Rock, paper, or scissors?");
-        playerSelection=playerSelection.toLowerCase();
-        let computerSelection=computerPlay();
-        console.log(playRound(playerSelection,computerSelection));
-        console.log("User score:",userScore);
-        console.log("Computer score:",computerScore)
-        }
-
-    if (userScore>computerScore){
-        return msg.textContent="You have won!";
-    } else if(computerScore>userScore){
-        return msg.textContent="You have lost" ;
-    } else{
-        return msg.textContent="You have drawn";
-    }
-} */
 
 function checkWinner(userScore,computerScore){
     if (userScore===5){
@@ -103,6 +79,7 @@ function checkWinner(userScore,computerScore){
     };
 }
 
+// Function to append a reset button that reloads the page and removes rps buttons. Gets executed in checkWinner function
 function reset(){
     const rst=document.createElement("button");
     rst.textContent="Reset"
