@@ -89,6 +89,5 @@ function reset(){
     container.removeChild(buttons);
     rst.addEventListener("click",()=>{
         location.reload();
-        return false;
     })
 }
